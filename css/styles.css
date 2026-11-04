@@ -1,0 +1,311 @@
+@property --c{syntax:'<color>';inherits:true;initial-value:#c9a24b}
+:root{
+  --navy:#001229;--navy2:#09121f;--gold:#c9a24b;--white:#eef0f5;--grey:#b9c4d8;
+  --font:'Garet',system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
+  --fw:clamp(120px,22vw,320px);  
+  --tint:55%;    
+  --tint2:30%;    
+  --c:#c9a24b;transition:--c .5s ease;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;font-family:var(--font);color:var(--white);background:linear-gradient(180deg,var(--navy) 0%,var(--navy2) 100%) fixed;background-color:var(--navy);min-height:100vh;overflow-x:hidden}
+#pre {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: #c9a24b; /* Rich Gold */
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.6s cubic-bezier(0.8, 0, 0.2, 1);
+}
+
+#pre.slide-up {
+    transform: translateY(-100%);
+}
+
+.preloader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+#pre svg {
+    width: 420px;
+    max-width: 85vw;
+    height: auto;
+}
+
+.typewriter-container {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #001229; /* Deep Navy */
+    letter-spacing: 8px;
+    border-right: 4px solid #001229;
+    padding-right: 6px;
+    white-space: nowrap;
+    height: 3rem; 
+    display: flex;
+    align-items: center;
+    animation: blink 0.75s step-end infinite;
+    margin-top: -10rem;
+}
+
+@keyframes blink {
+    from, to { border-color: transparent; }
+    50% { border-color: #001229; }
+}
+#pre svg {
+    width: 80vw; 
+    max-width: 1000px; 
+    height: auto;
+}
+
+#leo {
+    width: 100%; 
+    height: auto;
+}
+/* Header */
+header{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:18px clamp(16px,4vw,48px);position:relative;z-index:10}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--white);font:700 21px Garet,Georgia,serif;letter-spacing:.3px}
+.badge{width:46px;height:34px;border-radius:9px;background:var(--gold);display:grid;place-items:center;padding:3px}
+.badge svg{width:100%;height:100%}
+nav{display:flex;gap:34px}
+nav a{color:var(--grey);text-decoration:none;font-size:15px;transition:color .2s}
+nav a:hover{color:var(--white)}
+.cta{justify-self:end;background:var(--gold);color:var(--navy);font:500 14px var(--font);text-decoration:none;padding:12px 24px;border-radius:999px;transition:transform .2s,box-shadow .2s;white-space:nowrap}
+.cta:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(201,162,75,.38)}
+/* Hero */
+.hero{text-align:center;padding:clamp(26px,7vw,96px) 20px clamp(64px,9vw,120px)}
+.hero>*{opacity:0;transform:translateY(16px);transition:opacity .7s,transform .7s}
+body.ready .hero>*{opacity:1;transform:none}
+body.ready .hero>*:nth-child(2){transition-delay:.12s}
+body.ready .hero>*:nth-child(3){transition-delay:.24s}
+h1{margin:0 auto;max-width:900px;font-size:clamp(20px,4.6vw,58px);line-height:1.1;font-weight:500;letter-spacing:-.5px}
+h1 em{font-style:normal;color:var(--gold)}
+.sub{margin:18px auto 0;max-width:640px;color:var(--grey);font-size:clamp(15px,1.5vw,18px);line-height:1.6}
+.sub b{color:var(--gold)}
+.stage{position:relative;margin:34px auto 0;max-width:1400px;height:calc(var(--fw)*.536 + 110px)}
+#folder{position:absolute;left:50%;top:0;transform:translateX(-50%);width:var(--fw);height:auto;z-index:20;filter:drop-shadow(0 26px 24px rgba(0,0,0,.55)) drop-shadow(0 4px 6px rgba(0,0,0,.4))}
+#folder text{font-family:var(--font)}
+.arc{position:absolute;left:50%;z-index:5;width:0;height:0}
+.card{position:absolute;left:0;top:0;width:220px;min-height:210px;padding:24px 18px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#e9eff5;border:1px solid rgba(0,18,41,.1);border-radius:18px;color:#0a1a33;font:600 17px var(--font);text-align:center;cursor:pointer;box-shadow:0 12px 26px rgba(0,0,0,.4);transition:border-color .3s,box-shadow .3s;will-change:transform}
+.card svg {
+  width: 50px;
+  height: 50px;
+  display: block;
+  margin: 0 auto 8px;
+  color: var(--cc);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.what_you_get {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)), url('/assets/get.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+}
+
+.what_you_get .txt {
+  color: var(--white); 
+}
+
+.what_you_get h3 {
+  color: var(--white); 
+}
+
+.card.active{border-color:var(--cc);box-shadow:0 12px 30px rgba(0,0,0,.5),0 0 0 1px var(--cc)}
+.chip{display:inline-block;margin-top:6px;padding:11px 22px;border-radius:999px;border:1px solid var(--c);color:var(--c);text-decoration:none;font-size:14px;font-weight:500;background:rgba(0,18,41,.6);transition:background .3s}
+.chip:hover{background:rgba(255,255,255,.06)}
+.chipwrap{margin-top:140px; position:relative; z-index:30; margin-bottom:50px;}
+@media (max-width:919px){
+  :root{--fw:min(92vw,520px)}
+  nav{display:none}
+  header{grid-template-columns:1fr auto}
+  .stage{height:auto}
+  #folder{position:relative;left:auto;transform:none;display:block;margin:0 auto}
+  .arc{position:static;width:auto;height:auto;display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:26px 20px 8px;margin-top:-8px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .arc::-webkit-scrollbar{display:none}
+  .card{position:relative;flex:0 0 150px;scroll-snap-align:center;transform:none!important;opacity:1!important;pointer-events:auto!important}
+}
+
+#processStage {
+  position: relative;
+}
+
+/* The Coin Wrapper */
+.coin {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 58px;
+  height: 58px;
+  z-index: 20;
+  pointer-events: none;
+  will-change: transform, opacity;
+  opacity: 0;
+}
+
+/* Coin 3D Body and Metallic Gradient */
+.coin-face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fef08a 0%, #c9a24b 60%, #856417 100%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35), inset 0 2px 3px rgba(255, 255, 255, 0.6), inset 0 -2px 3px rgba(0, 0, 0, 0.4);
+  border: 2px solid #e2bc5e;
+}
+
+.coin-symbol {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Garet', sans-serif, system-ui; /* Matches your landing page typography */
+  font-size: 28px;
+  font-weight: 800;
+  color: #725310;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6), 0 -1px 1px rgba(0, 0, 0, 0.3);
+  user-select: none;
+}
+
+/* Dynamic Drop Shadow below the coin */
+.coin-shadow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 32px;
+  height: 12px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  filter: blur(4px);
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  pointer-events: none;
+  transition: transform 0.05s linear, opacity 0.05s linear;
+}
+
+/* Card and Dent Styling */
+.step {
+  position: relative;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+.step .dent {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 14px;
+  background: radial-gradient(ellipse at center, rgba(201, 162, 75, 0.45) 0%, transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.funding {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)), url('/assets/coin.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+}
+
+/* Full-bleed split section */
+.proof-full-section {
+  padding: 0 !important; /* Removes default section vertical padding so it meets edges cleanly if desired */
+  background: var(--color-white); /* Ensures the whole background is white */
+}
+
+.proof-split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  min-height: 520px;
+}
+
+.proof-img-col {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.proof-img-col img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.proof-text-col {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: #ffffff;
+  padding: 60px 8%;
+}
+
+
+.proof-text-wrap {
+  max-width: 540px;
+}
+
+/* Responsive breakpoint: stack vertically on mobile screens */
+@media (max-width: 868px) {
+  .proof-split-grid {
+    grid-template-columns: 1fr;
+  }
+  .proof-img-col {
+    height: 320px;
+  }
+  .proof-text-col {
+    padding: 40px 24px;
+  }
+}
+
+#typewriter-heading {
+  display: inline-block;
+  position: relative;
+}
+
+/* Blinking cursor effect */
+#typewriter-heading::after {
+  content: '|';
+  display: inline-block;
+  margin-left: 2px;
+  animation: cursorBlink 0.8s infinite;
+  color: #c9a24b; /* Matches your gold accent color */
+  font-weight: 400;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.brand-logo {
+  height: 136px; 
+  width: auto;
+  display: block;
+}
+
+/* Keeps hidden preloader states instantly locked out on repeat visits */
+body.ready #pre {
+  display: none !important;
+}
