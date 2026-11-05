@@ -46,7 +46,9 @@
     var TUCK=58;
     var HOLD=2200;    /* ms a card stays in the portfolio */
     var MOVE=900;     /* ms for each slide to the next card */
-    var SWITCH=.3;    /* portfolio takes the card's identity when within this distance of centre (0.1 = later, 0.5 = halfway) */          
+    var SWITCH=.3;    /* portfolio takes the card's identity when within this distance of centre (0.1 = later, 0.5 = halfway) */  
+    var MGAP=15;    /* mobile: gap between cards */
+    var MTUCK=40;   /* mobile: how far cards slide under the folder */        
     var arc=document.getElementById('arc'),stage=document.getElementById('stage'),
       folder=document.getElementById('folder'),chip=document.getElementById('chip'),
       fIcon=document.getElementById('fIcon'),fTitle=document.getElementById('fTitle').children,
@@ -57,7 +59,7 @@
     var b=document.createElement('button');b.className='card';b.type='button';
     b.style.setProperty('--cc',s.c);
     b.innerHTML='<svg><use href="#'+s.i+'"/></svg>'+s.n;
-    b.addEventListener('mouseenter',function(){paused=true});
+    b.addEventListener('mouseenter',function(){if(!mm.matches)paused=true});
     b.addEventListener('mouseleave',function(){paused=false});
     b.addEventListener('click',function(){select(i)});
     arc.appendChild(b);cards.push(b);
@@ -79,40 +81,39 @@
   }
 
   function layout(){
-    if(mm.matches){cards.forEach(function(c){c.style.transform='';c.style.opacity='';c.style.zIndex=''});arc.style.top='';return}
-    var W=stage.clientWidth,sp=Math.min(cards[0].offsetWidth+GAP,W/4.2),k=sp*DROP;
-    arc.style.top=(folder.offsetHeight-TUCK)+'px';
-    cards.forEach(function(c,i){
-      var t=wrap(i-pos),a=Math.abs(t);
-      var o=Math.max(0,Math.min(1,1-(a-2.1)/.9));
-      c.style.transform='translate(calc(-50% + '+(t*sp).toFixed(1)+'px),'+(k*t*t).toFixed(1)+'px)';
-      c.style.opacity=o.toFixed(2);
-      c.style.pointerEvents=o<.25?'none':'auto';
-      c.style.zIndex=Math.round(10-a*2);
-    });
-    var r=Math.round(pos);
-    if(Math.abs(pos-r)<SWITCH)setActive(((r%N)+N)%N);
-  }
+  var mob=mm.matches, W=stage.clientWidth, cw=cards[0].offsetWidth;
+  var sp=mob?cw+MGAP:Math.min(cw+GAP,W/4.2), k=mob?0:sp*DROP;
+  arc.style.top=(folder.offsetHeight-(mob?MTUCK:TUCK))+'px';
+  cards.forEach(function(c,i){
+    var t=wrap(i-pos),a=Math.abs(t);
+    var o=mob?Math.max(0,Math.min(1,1-(a-1.4)/.6)):Math.max(0,Math.min(1,1-(a-2.1)/.9));
+    c.style.transform='translate(calc(-50% + '+(t*sp).toFixed(1)+'px),'+(k*t*t).toFixed(1)+'px)';
+    c.style.opacity=o.toFixed(2);
+    c.style.pointerEvents=o<.25?'none':'auto';
+    c.style.zIndex=Math.round(10-a*2);
+  });
+  var r=Math.round(pos);
+  if(Math.abs(pos-r)<SWITCH)setActive(((r%N)+N)%N);
+}
 
-  function select(i){
-    if(mm.matches){setActive(i);cards[i].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});return}
-    tween={from:pos,delta:wrap(i-pos),e:0,dur:650};
-  }
+function select(i){
+  /* mobile: tapping the card already in the folder opens the eligibility check */
+  if(mm.matches&&!tween&&i===active){chip.click();return}
+  tween={from:pos,delta:wrap(i-pos),e:0,dur:650,user:1};
+}
 
-  function frame(now){
-  var dt=Math.min(50,now-last);last=now;            /* ms */
-  if(!mm.matches){
-    if(tween){
-      tween.e+=dt;
-      var p=Math.min(1,tween.e/tween.dur),e=p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;
-      pos=tween.from+tween.delta*e;
-      if(p>=1){pos=tween.from+tween.delta;tween=null;hold=0}
-    }else if(!paused){
-      hold+=dt;
-      if(hold>=HOLD)tween={from:pos,delta:1,e:0,dur:MOVE};
-    }
-    layout();
+function frame(now){
+  var dt=Math.min(50,now-last);last=now;
+  if(tween){
+    tween.e+=dt;
+    var p=Math.min(1,tween.e/tween.dur),e=p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;
+    pos=tween.from+tween.delta*e;
+    if(p>=1){pos=tween.from+tween.delta;hold=tween.user?-3000:0;tween=null}
+  }else if(!paused){
+    hold+=dt;
+    if(hold>=HOLD)tween={from:pos,delta:1,e:0,dur:MOVE};
   }
+  layout();
   requestAnimationFrame(frame);
 }
   mm.addEventListener&&mm.addEventListener('change',function(){setActive(active<0?0:active);layout()});

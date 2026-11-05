@@ -125,15 +125,17 @@ h1 em{font-style:normal;color:var(--gold)}
 .chip{display:inline-block;margin-top:6px;padding:11px 22px;border-radius:999px;border:1px solid var(--c);color:var(--c);text-decoration:none;font-size:14px;font-weight:500;background:rgba(0,18,41,.6);transition:background .3s}
 .chip:hover{background:rgba(255,255,255,.06)}
 .chipwrap{margin-top:140px; position:relative; z-index:30; margin-bottom:50px;}
+
+.mhint{display:none}
 @media (max-width:919px){
-  :root{--fw:min(92vw,520px)}
+  :root{--fw:clamp(130px,38vw,170px)}   
   nav{display:none}
   header{grid-template-columns:1fr auto}
-  .stage{height:auto}
-  #folder{position:relative;left:auto;transform:none;display:block;margin:0 auto}
-  .arc{position:static;width:auto;height:auto;display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:26px 20px 8px;margin-top:-8px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-  .arc::-webkit-scrollbar{display:none}
-  .card{position:relative;flex:0 0 150px;scroll-snap-align:center;transform:none!important;opacity:1!important;pointer-events:auto!important}
+  .stage{overflow-x:clip;height:calc(var(--fw)*1.267 + 90px)}
+  .arc{display:block;overflow:visible}  /* desktop positioning applies again */
+  .card{width:150px;min-height:130px;padding:14px 10px;font-size:14px;border-radius:14px}
+  .card svg{width:36px;height:36px}
+  .mhint{display:block;margin:10px 0 0;color:var(--grey);font-size:14px}
 }
 
 #processStage {
@@ -274,7 +276,7 @@ h1 em{font-style:normal;color:var(--gold)}
     padding: 40px 24px;
   }
   .brand-logo {
-  height: 36px; 
+  height: 20px; 
   width: auto;
   display: block;
 }
