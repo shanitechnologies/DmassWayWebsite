@@ -260,6 +260,8 @@ h1 em{font-style:normal;color:var(--gold)}
   max-width: 540px;
 }
 
+
+
 /* Responsive breakpoint: stack vertically on mobile screens */
 @media (max-width: 868px) {
   .proof-split-grid {
@@ -271,6 +273,11 @@ h1 em{font-style:normal;color:var(--gold)}
   .proof-text-col {
     padding: 40px 24px;
   }
+  .brand-logo {
+  height: 36px; 
+  width: auto;
+  display: block;
+}
 }
 
 #typewriter-heading {
@@ -300,7 +307,7 @@ h1 em{font-style:normal;color:var(--gold)}
 }
 
 .brand-logo {
-  height: 136px; 
+  height: 106px; 
   width: auto;
   display: block;
 }
