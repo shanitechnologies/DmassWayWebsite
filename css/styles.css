@@ -78,7 +78,7 @@ nav a:hover{color:var(--white)}
 .cta{justify-self:end;background:var(--gold);color:var(--navy);font:500 14px var(--font);text-decoration:none;padding:12px 24px;border-radius:999px;transition:transform .2s,box-shadow .2s;white-space:nowrap}
 .cta:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(201,162,75,.38)}
 /* Hero */
-.hero{text-align:center;padding:clamp(26px,7vw,96px) 20px clamp(64px,9vw,120px)}
+.hero{text-align:center;padding:clamp(26px,3vw,40px) 20px clamp(64px,9vw,120px)}
 .hero>*{opacity:0;transform:translateY(16px);transition:opacity .7s,transform .7s}
 body.ready .hero>*{opacity:1;transform:none}
 body.ready .hero>*:nth-child(2){transition-delay:.12s}
@@ -284,7 +284,7 @@ h1 em{font-style:normal;color:var(--gold)}
     padding: 40px 24px;
   }
   .brand-logo {
-  height: 16px; 
+  height: 12px; 
   width: auto;
   display: block;
 }
