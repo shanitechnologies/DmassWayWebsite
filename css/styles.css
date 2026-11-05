@@ -144,6 +144,7 @@ h1 em{font-style:normal;color:var(--gold)}
 
   .mhint{display:block;text-align:center;margin:0 auto;padding:0 20px;color:var(--grey);font-size:14px}
   .chipwrap{margin-top:10px}
+  .preloader-content{gap:8rem}
 }
 
 #processStage {
