@@ -125,17 +125,25 @@ h1 em{font-style:normal;color:var(--gold)}
 .chip{display:inline-block;margin-top:6px;padding:11px 22px;border-radius:999px;border:1px solid var(--c);color:var(--c);text-decoration:none;font-size:14px;font-weight:500;background:rgba(0,18,41,.6);transition:background .3s}
 .chip:hover{background:rgba(255,255,255,.06)}
 .chipwrap{margin-top:140px; position:relative; z-index:30; margin-bottom:50px;}
-
 .mhint{display:none}
+
 @media (max-width:919px){
-  :root{--fw:clamp(130px,38vw,170px)}   
+  :root{--fw:clamp(130px,38vw,170px)}
   nav{display:none}
   header{grid-template-columns:1fr auto}
-  .stage{overflow-x:clip;height:calc(var(--fw)*1.267 + 90px)}
-  .arc{display:block;overflow:visible}  /* desktop positioning applies again */
+
+  .hero{padding-top:clamp(24px,12vw,50px)}
+  .hero h1,
+  .hero .sub{padding-left:14px;padding-right:14px}
+  .hero h1{overflow-wrap:break-word}
+
+  .stage{overflow-x:clip;height:calc(var(--fw)*1.267 + 50px)}
+  .arc{display:block;overflow:visible}
   .card{width:150px;min-height:130px;padding:14px 10px;font-size:14px;border-radius:14px}
-  .card svg{width:36px;height:36px}
-  .mhint{display:block;margin:10px 0 0;color:var(--grey);font-size:14px}
+  .card svg{width:26px;height:26px}
+
+  .mhint{display:block;text-align:center;margin:0 auto;padding:0 20px;color:var(--grey);font-size:14px}
+  .chipwrap{margin-top:10px}
 }
 
 #processStage {
@@ -276,7 +284,7 @@ h1 em{font-style:normal;color:var(--gold)}
     padding: 40px 24px;
   }
   .brand-logo {
-  height: 20px; 
+  height: 16px; 
   width: auto;
   display: block;
 }
