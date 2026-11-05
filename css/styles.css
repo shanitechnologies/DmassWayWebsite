@@ -106,7 +106,7 @@ h1 em{font-style:normal;color:var(--gold)}
 }
 
 .what_you_get {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)), url('/assets/get.webp');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)), url('../assets/get.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -214,7 +214,7 @@ h1 em{font-style:normal;color:var(--gold)}
 }
 
 .funding {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)), url('/assets/coin.webp');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)), url('../assets/coin.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

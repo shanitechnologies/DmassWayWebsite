@@ -258,7 +258,7 @@ h3{margin:0 0 8px;font-size:19px;line-height:1.3;font-weight:700}
 
 
 .services-hero {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('/assets/coin.webp');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('../assets/coin.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -266,7 +266,7 @@ h3{margin:0 0 8px;font-size:19px;line-height:1.3;font-weight:700}
 }
 
 .services-g3-cards {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/assets/services.webp');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/services.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -387,7 +387,7 @@ h3{margin:0 0 8px;font-size:19px;line-height:1.3;font-weight:700}
 }
 
 .about-hero {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('/assets/about.webp');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('../assets/about.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
