@@ -12,19 +12,7 @@
   var loaded = new Promise(function(r){ document.readyState === 'complete' ? r() : window.addEventListener('load', r); });
   var fonts = (document.fonts && document.fonts.ready) || Promise.resolve();
 
-  /* ---------- Typewriter Effect ---------- */
-  const textToType = "DMASSWAY";
-  const typeTarget = document.getElementById('typewriter');
-  let charIdx = 0;
 
-  const typing = setInterval(() => {
-    if (typeTarget && charIdx < textToType.length) {
-      typeTarget.textContent += textToType.charAt(charIdx);
-      charIdx++;
-    } else {
-      clearInterval(typing);
-    }
-  }, 100);
 
   /* ---------- Preloader Exit Trigger ---------- */
   Promise.all([minT, loaded, fonts]).then(function(){
@@ -232,8 +220,7 @@
   /* ---------- Preloader Exit Trigger ---------- */
   Promise.all([minT, loaded, fonts]).then(function(){
     // Mark as preloaded for this browser session immediately
-    try { sessionStorage.setItem('dmassPreloaded', 'true'); } 
-    catch (e) {}
+    try { sessionStorage.setItem('dmassPreloaded', 'true'); } catch (e) {}
 
     if (preloader) {
       preloader.classList.add('slide-up');

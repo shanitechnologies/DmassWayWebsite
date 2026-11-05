@@ -41,7 +41,7 @@ body{margin:0;font-family:var(--font);color:var(--white);background:linear-gradi
 .typewriter-container {
     font-size: 2.5rem;
     font-weight: bold;
-    color: #001229; /* Deep Navy */
+    color: #001229;
     letter-spacing: 8px;
     border-right: 4px solid #001229;
     padding-right: 6px;

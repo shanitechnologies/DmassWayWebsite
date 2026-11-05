@@ -192,7 +192,7 @@
     var go = function (n) {
       step = n;
       if (n > 2) return result();
-      var q = Q[n], sel = n === 2 ? ans.have : [ans[q.id]];
+      var q = Q[n], sel = n === 2 ? ans.have : (ans[q.id] ? [ans[q.id]] : []);
       var html = '<div class="rc-step" tabindex="-1">' +
         '<div class="rc-top"><span class="rc-count">Question ' + (n + 1) + ' of 3</span>' +
         '<div class="rc-bar"><i style="width:' + ((n + 1) / 3 * 100) + '%"></i></div></div>' +
@@ -210,8 +210,9 @@
 
     var advance = function () { go(step + 1); };
 
-    app.addEventListener('change', function (e) {
-      var i = e.target; if (i.tagName !== 'INPUT') return;
+  app.addEventListener('change', function (e) {
+    var i = e.target;
+    if (i.tagName !== 'INPUT' || step > 2 || !i.closest('.opts')) return;
       if (step === 2) {
         var none = Q[2].opts[6].v;
         if (i.value === none && i.checked) { $$('input', app).forEach(function (x) { if (x !== i) x.checked = false; }); }
@@ -242,9 +243,11 @@
     });
 
     var result = function () {
+      var need = find(0, ans.need), amt = find(1, ans.amount);
+      if (!need) return go(0);
+      if (!amt)  return go(1);
       var have = ans.have.filter(function (v) { return v !== 'none'; });
       var score = have.length;
-      var need = find(0, ans.need), amt = find(1, ans.amount);
       var fac = need && need.f;
       var band = score >= CFG.readyMin ? 'ready' : score >= CFG.almostMin ? 'almost' : 'not';
       var label = { ready: 'Ready', almost: 'Almost there', not: 'Not yet' }[band];
