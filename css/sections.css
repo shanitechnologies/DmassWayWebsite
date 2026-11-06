@@ -414,3 +414,194 @@ h3{margin:0 0 8px;font-size:19px;line-height:1.3;font-weight:700}
   object-fit: cover; /* Crops smoothly to fill space without distortion */
   display: block;
 }
+
+/* ---------- ETHOS TUNABLES ---------- */
+:root{
+  --ethos-img:url('../assets/m.jpg');                          /* e.g. url('../assets/ethos-bg.webp') */
+  --ethos-overlay:linear-gradient(180deg,rgba(0,18,41,.88),rgba(0,18,41,.72));
+  --ethos-blur:14px;                         /* glass blur strength          */
+  --ethos-gap:24px;                          /* gap between the two cards    */
+  --val-num-size:clamp(52px,6vw,76px);       /* big numeral size             */
+  --val-num-color:var(--gold,#c9a24b);       /* numeral colour               */
+  --val-cols:4;                              /* desktop columns for values   */
+}
+
+/* ---------- ETHOS ---------- */
+.ethos{
+  background:var(--ethos-overlay),var(--ethos-img) center/cover no-repeat,var(--navy);
+  color:#eef0f5;
+  text-align:center;
+}
+.ethos-slogan{
+  font-size:clamp(30px,5.2vw,64px);
+  line-height:1.12;
+  max-width:18ch;
+  margin:0 auto;
+}
+.ethos-slogan .gold{color:var(--gold,#c9a24b)}
+.ethos-rule{
+  display:block;
+  width:72px;height:3px;
+  margin:28px auto 48px;
+  background:var(--gold);
+  border-radius:2px;
+}
+.ethos-cards{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:var(--ethos-gap);
+  text-align:left;
+}
+.ethos-card{
+  background:var(--glass);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:clamp(24px,3vw,40px);
+  -webkit-backdrop-filter:blur(var(--ethos-blur));
+  backdrop-filter:blur(var(--ethos-blur));
+}
+.ethos-card p:last-child{
+  font-size:clamp(18px,2vw,24px);
+  line-height:1.4;
+  margin:0;
+}
+
+/* ---------- VALUES ---------- */
+.val-section{background:var(--navy)}
+.val-grid{
+  display:grid;
+  grid-template-columns:repeat(var(--val-cols),1fr);
+  gap:clamp(24px,3vw,40px);
+}
+.val b{
+  display:block;
+  font-size:var(--val-num-size);
+  line-height:1;
+  color:var(--val-num-color);
+  margin-bottom:14px;
+}
+.val h3{margin:0 0 8px}
+.val p{margin:0}
+
+@media (max-width:980px){ .val-grid{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:760px){ .ethos-cards{grid-template-columns:1fr} }
+@media (max-width:560px){ .val-grid{grid-template-columns:1fr} }
+
+/* ---------- FOOTER SOCIAL + CREDIT ---------- */
+:root{
+  --social-size:42px;     /* icon button diameter */
+  --social-gap:12px;      /* space between icons  */
+}
+.social{
+  display:flex;
+  gap:var(--social-gap);
+  margin-top:20px;
+}
+.social a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:var(--social-size);
+  height:var(--social-size);
+  border:1px solid var(--line);
+  border-radius:50%;
+  color:inherit;
+  transition:color .25s var(--ease),border-color .25s var(--ease),transform .25s var(--ease);
+}
+.social a:hover,
+.social a:focus-visible{
+  color:var(--gold,#c9a24b);
+  border-color:var(--gold,#c9a24b);
+  transform:translateY(-2px);
+}
+.footer-credit{
+  margin:16px 0 0;
+  text-align:center;
+  font-size:.85em;
+  opacity:.7;
+}
+.footer-credit a{text-decoration:underline;text-underline-offset:3px}
+.footer-credit a:hover{color:var(--gold,#c9a24b)}
+/* ---------- TESTIMONIALS TUNABLES ---------- */
+:root{
+  --testi-cols:2;                             /* desktop columns (2 = 2x2, 4 = single row) */
+  --testi-gap:clamp(20px,2.4vw,32px);
+  --testi-pad:clamp(24px,3vw,40px);           /* card padding            */
+  --testi-quote-size:clamp(17px,1.6vw,21px);  /* quote text size         */
+  --testi-mark-size:72px;                     /* big quote mark size     */
+  --testi-line:rgba(0,18,41,.12);             /* card border on white    */
+  --testi-bg:#f6f8fb;                         /* card fill               */
+}
+
+.testi{background:#fff;color:var(--navy,#001229)}
+.testi-grid{
+  display:grid;
+  grid-template-columns:repeat(var(--testi-cols),1fr);
+  gap:var(--testi-gap);
+}
+.tcard{
+  position:relative;
+  margin:0;
+  padding:var(--testi-pad);
+  background:var(--testi-bg);
+  border:1px solid var(--testi-line);
+  border-radius:var(--radius);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.tcard::before{
+  content:"\201C";
+  display:block;
+  font-size:var(--testi-mark-size);
+  line-height:.6;
+  height:.5em;
+  color:var(--gold,#c9a24b);
+  margin-bottom:12px;
+}
+.tcard blockquote{margin:0 0 24px}
+.tcard blockquote p{
+  margin:0;
+  font-size:var(--testi-quote-size);
+  line-height:1.5;
+}
+.tcard figcaption{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  padding-top:18px;
+  border-top:1px solid var(--testi-line);
+}
+.tcard figcaption b{font-size:1em}
+.tcard figcaption span{opacity:.8}
+.tcard figcaption small{
+  margin-top:8px;
+  align-self:flex-start;
+  padding:4px 10px;
+  border:1px solid var(--gold,#c9a24b);
+  border-radius:999px;
+  font-size:.78em;
+  color:var(--navy,#001229);
+}
+.testi-note{
+  margin:32px 0 0;
+  text-align:center;
+  font-size:.9em;
+  opacity:.7;
+}
+
+/* Dev badge: disappears when you delete data-placeholder from the card */
+.tcard[data-placeholder]::after{
+  content:"PLACEHOLDER";
+  position:absolute;
+  top:14px;right:14px;
+  padding:3px 8px;
+  font-size:11px;
+  letter-spacing:.08em;
+  font-weight:700;
+  color:#fff;
+  background:#c0392b;
+  border-radius:4px;
+}
+
+@media (max-width:760px){ .testi-grid{grid-template-columns:1fr} }
